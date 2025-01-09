@@ -31,7 +31,7 @@ def qa_agent(memory, uploaded_file, question):
         # 每个分割块之间的重叠大小，比如上一块是从0-1000，
         # 下一个块就是从901-2000，重叠就是100
         chunk_overlap=100, 
-        separators=["\n", "。", "！ ", "？", "，", "、", ""]
+        separators=["\n", "。", "！ ", "？", "，", "、", "", "?"]
     )
     # 分割文档，得到一系列的文档
     # 返回值是列表，每个元素是一个Document对象
