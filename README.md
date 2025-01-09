@@ -26,7 +26,7 @@ LLM 可以采用接口式请求（chatGPT，demo 中使用 gpt-3.5-turbo），�
 
 
 
-LLM 搭建（如果是针对）
+LLM 本地化搭建（如果是针对）：UNDO
 
 
 
