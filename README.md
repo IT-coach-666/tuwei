@@ -30,24 +30,30 @@ streamlit run demo-main.py
 
 #### 2、将分块文本信息向量化、存入数据库
 
-如果数据量少，存入内存也可以
+文本片段向量化、创建索引：
 
-通过 openai 的 embedding 接口，将文档转化为向量（也可以自己训练向量化模型或使用开源模型，并部署到本地环境）
+1）向量化可通过 openai 的 embedding 接口，将文档转化为向量；也可以训练向量化模型或使用开源模型，并部署到本地环境
 
-将转化后的向量存入 Pinecone 向量数据库（也可以自己创建数据库，并基于 faiss / milvus 工具建索引，实现快速高效查询）；demo 示例中使用了 langchain_community 中封装的 faiss
+2）将转化后的向量存入 Pinecone 向量数据库（也可以自己创建数据库，并基于 faiss / milvus 工具建索引，实现快速高效查询）；demo 示例中使用了 langchain_community 中封装的 faiss
 
 
 #### 3、从数据库中检索 query 相关度高的内容，并投喂给 LLM 进行回答
 
 对 query 进行向量化，并基于向量间的相似度（如 cosine 相似度）从数据库中查找与 query 相关的 top-K 个文本片段
 
-LLM 可以采用接口式请求（chatGPT，demo 中使用 gpt-3.5-turbo），或者基于先进开源项目（如 LLaMA、Qwen 等；如果着重考虑中文能力，可以使用 Qwen）垂直领域进行 SFT、DPO（可适当采样 LoRA、QLoRA 以及相关技术减少显存占用），并通过 vLLM 本地部署。
+LLM 可以采用接口式请求（如 openAI 的 gpt-3.5-turbo 接口），或者基于先进开源项目（如 LLaMA、Qwen 等；如果着重考虑中文能力，可以使用 Qwen）垂直领域进行 SFT、DPO（可适当采样 LoRA、QLoRA 以及相关技术减少显存占用），并通过 vLLM 本地部署。
 
+可结合 prompt 工程，适当拟定与任务相关的 prompt，如：
 
-
-
-LLM 本地化搭建（如果是针对）：UNDO
-
+prompt_template = (
+    "You are an assistant for question-answering tasks. "
+    "Use the following pieces of retrieved context to answer "
+    "the question. If you don't know the answer, say that you "
+    "don't know. Use three sentences maximum and keep the "
+    "answer concise."
+    "\n\n"
+    "{context}"
+)
 
 
 
