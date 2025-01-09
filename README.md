@@ -19,6 +19,8 @@
 
 3、从数据库中检索 query 相关度高的内容，并投喂给 LLM 进行回答
 
+对 query 进行向量化，并基于向量间的相似度（如 cosine 相似度）从数据库中查找与 query 相关的 top-K 个文本片段
+
 LLM 可以采用接口式请求，或者基于先进开源项目（如 LLaMA、Qwen 等；如果着重考虑中文能力，可以使用 Qwen）垂直领域进行 SFT、DPO（可适当采样 LoRA、QLoRA 以及相关技术减少显存占用），并通过 vLLM 本地部署。
 
 
@@ -30,12 +32,13 @@ LLM 搭建（如果是针对）
 
 ### demo 示例
 
-安装了 gradio 的虚拟环境：
-conda activate jy_py310
+在安装以下相关依赖包的虚拟环境（conda activate jy_py310）
 
-python demo.py
+pip install -r requirements.txt
 
-临时 demo：http://124.221.34.163:7860/
+streamlit run demo-main.py
+
+临时 demo：http://124.221.34.163:8501/
 
 
 
