@@ -5,7 +5,7 @@
 ### 系统架构设计
 1、pdf 内容解析、分块
 
-使用 PyPDF2 库读取 pdf 文件（针对 PDF 中的表格，可通过 OCR 技术获取表格信息）
+使用 PyPDF2 库（langchain_community 中封装了 PyPDFLoader 类）读取 pdf 文件（针对 PDF 中的表格，可通过 OCR 技术获取表格信息）
 
 使用 langchain 将读取的文本切分成小段，允许 10-20% 的重叠，使得文档的上下文语义信息得到合理衔接
 
@@ -14,7 +14,7 @@
 
 通过 openai 的 embedding 接口，将文档转化为向量（也可以自己训练向量化模型或使用开源模型，并部署到本地环境）
 
-将转化后的向量存入 Pinecone 向量数据库（也可以自己创建数据库，并基于 faiss / milvus 工具建索引，实现快速高效查询）
+将转化后的向量存入 Pinecone 向量数据库（也可以自己创建数据库，并基于 faiss / milvus 工具建索引，实现快速高效查询）；demo 示例中使用了 langchain_community 中封装的 faiss
 
 
 3、从数据库中检索 query 相关度高的内容，并投喂给 LLM 进行回答
