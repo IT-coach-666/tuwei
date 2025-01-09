@@ -18,6 +18,8 @@ streamlit run demo-main.py
 
 
 ### 系统架构设计
+<img width="323" alt="image" src="https://github.com/user-attachments/assets/91cef89e-1254-4c09-8740-93005f498ec2" />
+
 1、pdf 内容解析、分块
 
 使用 PyPDF2 库（langchain_community 中封装了 PyPDFLoader 类）读取 pdf 文件（针对 PDF 中的表格，可通过 OCR 技术获取表格信息）
