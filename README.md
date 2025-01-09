@@ -16,6 +16,7 @@ streamlit run demo-main.py
 
 临时 demo：http://124.221.34.163:8501/（注意：openAI 接口在网络不稳定的情况下，即使 API-key 有效，也要等待请求很久）
 
+<img width="888" alt="image" src="https://github.com/user-attachments/assets/4d6424c3-70f5-4339-b8f8-25bf27127157" />
 
 
 ### 系统架构设计
