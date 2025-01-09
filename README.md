@@ -39,12 +39,11 @@ streamlit run demo-main.py
 
 #### 3、从数据库中检索 query 相关度高的内容，并投喂给 LLM 进行回答
 
-对 query 进行向量化，并基于向量间的相似度（如 cosine 相似度）从数据库中查找与 query 相关的 top-K 个文本片段
+1）对 query 进行向量化，并基于向量间的相似度（如 cosine 相似度）从数据库中查找与 query 相关的 top-K 个文本片段
 
-LLM 可以采用接口式请求（如 openAI 的 gpt-3.5-turbo 接口），或者基于先进开源项目（如 LLaMA、Qwen 等；如果着重考虑中文能力，可以使用 Qwen）垂直领域进行 SFT、DPO（可适当采样 LoRA、QLoRA 以及相关技术减少显存占用），并通过 vLLM 本地部署。
+2）LLM 可以采用接口式请求（如 openAI 的 gpt-3.5-turbo 接口），或者基于先进开源项目（如 LLaMA、Qwen 等；如果着重考虑中文能力，可以使用 Qwen）垂直领域进行 SFT、DPO（可适当采样 LoRA、QLoRA 以及相关技术减少显存占用），并通过 vLLM 本地部署。
 
-可结合 prompt 工程，适当拟定与任务相关的 prompt，如：
-
+3）可结合 prompt 工程，适当拟定与任务相关的 prompt，如：
 prompt_template = (
     "You are an assistant for question-answering tasks. "
     "Use the following pieces of retrieved context to answer "
@@ -59,3 +58,6 @@ prompt_template = (
 
 ### 涉及图表信息的问题回答优化
 
+1）引入多模态系统，进行图文理解、表格理解
+
+2）对图表进行 OCR，抽取图表中的关键信息
