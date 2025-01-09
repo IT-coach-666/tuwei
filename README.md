@@ -2,6 +2,21 @@
 
 设计一个基于文档（如 PDF 文档）的问答系统（chatbot 聊天机器人），文档篇幅可能很长
 
+### demo 示例
+
+在 demo-main.py 中设置可用的 api-key：
+os.environ["OPENAI_API_KEY"] = "sk-proj-xxxxx"
+
+安装以下相关依赖包（可基于 python 3.10 安装）
+
+pip install -r requirements.txt
+
+streamlit run demo-main.py
+
+临时 demo：http://124.221.34.163:8501/
+
+
+
 ### 系统架构设计
 1、pdf 内容解析、分块
 
@@ -27,18 +42,6 @@ LLM 可以采用接口式请求（chatGPT，demo 中使用 gpt-3.5-turbo），�
 
 
 LLM 本地化搭建（如果是针对）：UNDO
-
-
-
-### demo 示例
-
-在安装以下相关依赖包的虚拟环境（conda activate jy_py310）
-
-pip install -r requirements.txt
-
-streamlit run demo-main.py
-
-临时 demo：http://124.221.34.163:8501/
 
 
 
