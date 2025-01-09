@@ -10,9 +10,10 @@ from langchain_community.vectorstores import FAISS
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 
-def qa_agent(openai_api_key, memory, uploaded_file, question):
+#def qa_agent(openai_api_key, memory, uploaded_file, question):
+def qa_agent(memory, uploaded_file, question):
     model = ChatOpenAI(model="gpt-3.5-turbo",
-                       openai_api_key=openai_api_key,
+                       #openai_api_key=openai_api_key,
                        max_tokens=2000)
     # 1、读取文件
     # PyPDFLoader不能从内存中读取文件，所以需要先保存到本地
@@ -30,7 +31,7 @@ def qa_agent(openai_api_key, memory, uploaded_file, question):
         # 每个分割块之间的重叠大小，比如上一块是从0-1000，
         # 下一个块就是从901-2000，重叠就是100
         chunk_overlap=100, 
-        separators=["\n", "。", "！ ", "？", "，", "、", ""]
+        separators=["\n", "。", "！ ", "？", "，", "、", "", "?"]
     )
     # 分割文档，得到一系列的文档
     # 返回值是列表，每个元素是一个Document对象
