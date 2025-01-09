@@ -50,7 +50,7 @@ streamlit run demo-main.py
 
 3）可结合 prompt 工程，适当拟定与任务相关的 prompt，如：prompt_template = "You are an assistant for question-answering tasks. Use the following pieces of retrieved context to answer the question. If you don't know the answer, say that you don't know. Use three sentences maximum and keep the answer concise. \n\n {context}"
 
-4）可额外对 query 进行处理分析、query 理解，比如识别出 query 文本中的时间期限等受限条件，即可进行更精细化的检索。
+4）可额外对 query 进行处理分析、query 理解，比如识别出 query 文本中的时间期限等受限条件，即可进行更精细化的检索；或者利用 LLM 对 query 进行更智能化的改写（结合特定的 prompt，让 LLM 辅助理解 query 的真实意图），以实现更精确查找。
 
 
 ### 涉及图表信息的问题回答优化
